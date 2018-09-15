@@ -10,86 +10,131 @@ import org.apache.lucene.search.TopDocs;
 
 import javax.print.Doc;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
 
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException, ParseException, CborException {
         System.setProperty("file.encoding", "UTF-8");
-        String query1 = "power nap benefits";
-        String query2 = "whale vocalization production of sound";
-        String query3 = "pokemon puzzle league";
+        String methdName = "";
         //read data
 
-        if (args.length < 2){
-            System.out.println("command line argument : indexDirectory FileDirectory");
-        }
         //
         ///Users/xinliu/Documents/UNH/18Fall/cs853/index /Users/xinliu/Documents/UNH/18Fall/cs853/test200/test200-train/train.pages.cbor-paragraphs.cbor
-        String indexPath = args[0];
-
-        String filePath = args[1];
-        List<Paragraph> list = new ArrayList<>();
-        boolean defualtScore = true;
-        try {
-            FileInputStream stream = new FileInputStream(new File(filePath));
-            for (Data.Paragraph data: DeserializeData.iterableParagraphs(stream)){
-                Paragraph p = new Paragraph(data.getParaId(),data.getTextOnly());
-                list.add(p);
-            }
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
+        String defualtScore = args[0];
+        String indexPath = args[1];
+        boolean useDefaultScore = Boolean.valueOf(defualtScore);
+        if (useDefaultScore){
+            methdName = "default";
+            System.out.println("using lucene default score function");
+        }else{
+            methdName = "custome";
+            System.out.println("using lucene customed score function");
         }
 
-        System.out.println("==================Search with default score function=======================");
-        System.out.println("");
-        search(query1,10,list,defualtScore,indexPath);
-        search(query2,10,list,defualtScore,indexPath);
-        search(query3,10,list,defualtScore,indexPath);
 
-        System.out.println("===================search with custom score function========================");
-        search(query1,10,list,!defualtScore,indexPath);
 
-        search(query2,10,list,!defualtScore,indexPath);
-        search(query3,10,list,!defualtScore,indexPath);
+        List<Paragraph> paragraphsList = ReadData.getParagraphList();
 
+        List<Page> pageList = ReadData.getPageList();
+
+        List<Rank> rankList = getRankList(paragraphsList,pageList,useDefaultScore,methdName,indexPath);
+
+        writeResult(rankList,useDefaultScore);
 
     }
 
 
-    public static void search(String query,int size,List<Paragraph> list,boolean defualtScore,String indexPath){
+    public static List<Rank> getRankList(List<Paragraph> paragraphList,List<Page> pageList, boolean useDefaultScore, String methodName,String indexPath) throws IOException, ParseException, CborException {
+        List<Rank> rankList = new ArrayList<>();
+        Indexer indexer = new Indexer(useDefaultScore,indexPath);
 
+        indexer.rebuildIndexes(paragraphList);
+       for (Page page : pageList){
+           System.out.println("searching for query: "+ page.getPageName());
+
+           String query = page.getPageName();
+
+           SearchEngine se = new SearchEngine(useDefaultScore,indexPath);
+           TopDocs topDocs = se.performSearch(query, 100);
+           System.out.println("Result found: "+topDocs.totalHits);
+
+            ScoreDoc[] hits = topDocs.scoreDocs;
+
+            for (int i = 0; i < hits.length;i++){
+                Document document = se.getDocument(hits[i].doc);
+
+                Rank rank = new Rank();
+                rank.setQueryId(page.getPageId());
+                rank.setParagId(document.get("id"));
+                rank.setRank(i+1);
+                rank.setScore(hits[i].score);
+                String methodTeamName = "Group7" + "-"+methodName;
+
+                rank.setMethodTeamName(methodTeamName);
+                rankList.add(rank);
+            }
+
+
+       }
+        System.out.println("search done!    "+ "get rank list with size: " +rankList.size());
+        return rankList;
+    }
+
+
+    public static void writeResult(List<Rank> rankList,boolean useDefaultScore){
+        if (rankList.isEmpty()){
+            System.out.println("rank list is empty");
+            return;
+        }
+
+        String output = "rankResult";
+
+        if (useDefaultScore){
+            output = output + "-defaultScoreFunc.txt";
+        }else{
+            output = output + "-customScoreFunc.txt";
+        }
+
+        String path = "./"+output;
+
+        BufferedWriter bufferWriter = null;
+        FileWriter fileWriter = null;
 
         try {
-            Indexer indexer = new Indexer(defualtScore,indexPath);
-            indexer.rebuildIndexes(list);
 
-            SearchEngine se = new SearchEngine(defualtScore,indexPath);
-            TopDocs topDocs = se.performSearch(query, size);
-            System.out.println("Search with search query ===> " + query);
-            System.out.println("Search with defaut engine ===> " + defualtScore);
-            System.out.println("Results found: " + topDocs.totalHits);
-            ScoreDoc[] hits = topDocs.scoreDocs;
-            System.out.println("hits length "+ hits.length);
-            System.out.println("Rank -------------ID --------------------------------------------------Score ------------- Text ---------  ");
-            for (int i = 0; i < hits.length;i++){
-                Document doc = se.getDocument(hits[i].doc);
-                System.out.println((i+1)+".   "+doc.get("id")+"   Score: "+hits[i].score+"  "+doc.get("text"));
+            fileWriter = new FileWriter(path);
+            bufferWriter = new BufferedWriter(fileWriter);
+
+            for (Rank rank : rankList){
+                String line = rank.getGueryId() + " "+"Q0"+" "+rank.getParagId()+" "+rank.getRank()+" "
+                        +rank.getScore()+" "+rank.getMethodTeamName();
+                bufferWriter.write(line);
+
+                bufferWriter.newLine();
             }
-            System.out.println("search finished");
-        } catch (IOException e) {
+
+            System.out.println("output file wrote to file: "+path);
+        }catch (IOException e){
             e.printStackTrace();
-        } catch (CborException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+        }finally {
+
+            try {
+                if (bufferWriter != null){
+                    bufferWriter.close();
+                }
+                if (fileWriter!=null){
+                    fileWriter.close();
+                }
+            }catch (IOException e){
+                e.printStackTrace();
+            }
+
         }
+
+
     }
 }
