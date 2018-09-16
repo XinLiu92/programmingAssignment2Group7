@@ -2,7 +2,7 @@ package main;
 
 import co.nstant.in.cbor.CborException;
 import org.apache.lucene.queryparser.classic.ParseException;
-import org.apache.lucene.benchmark.quality.QualityStats;
+
 import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -10,56 +10,51 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.TreeMap;
 
-public class PrecisionAtR {
+public class MAP {
 
     public static void main(String args[]) throws ParseException, IOException, CborException {
-
-
         String defaulScoreInput = args[0];
 
         boolean defaultScore = Boolean.valueOf(defaulScoreInput);
-
 
         HashMap<String, List<Rank>> rankMap = Main.rankResultMap(defaultScore);
 
         TreeMap<String,List<String>> relevantMap = ReadData.getRelevant();
 
-        HashMap<String, Double> precisionAtR = new HashMap<>();
+        HashMap<String,Double> ap_map = getApMap(rankMap,relevantMap);
 
-        for (String queryId : relevantMap.keySet()){
-            //tp
-            if (rankMap.get(queryId) != null && relevantMap.get(queryId) != null){
-                double pR = calculatePR(rankMap.get(queryId),relevantMap.get(queryId));
-
-                precisionAtR.put(queryId,pR);
-            }else {
-                System.out.println("no such ranked or relevant documents: " + queryId);
-            }
-        }
-
-        writeResult(precisionAtR,defaultScore);
+        writeResult(ap_map,defaultScore);
 
     }
 
-    public static double calculatePR(List<Rank> rankList,List<String> relevantDocList ){
-        int tpNum = 0;
-        double precision = 0;
+    public static HashMap<String,Double> getApMap(HashMap<String,List<Rank>> rankMap,TreeMap<String,List<String>> relevantMap){
+        HashMap<String,Double> ap_map = new HashMap<>();
 
-        int relevantNum = relevantDocList.size();
+        for (String queryId : rankMap.keySet()){
 
-        if (relevantNum > 0){
-            List<Rank> firstRDoc = rankList.subList(0,Math.min(relevantNum,rankList.size()));
+            List<Rank> list = rankMap.get(queryId);
+            List<String> relevantDocList = relevantMap.get(queryId);
 
-            for (Rank rank : firstRDoc){
-                if (relevantDocList.contains(rank.getParagId())){
-                    tpNum++;
+            double sum = 0;
+            double tp = 0;
+            double ap = 0;
+            for (Rank rank : list){
+
+                if (relevantDocList.contains(rank.getParagId())&&rank.getRank()!= 0){
+                    tp++;
+                    sum += tp/(double) rank.getRank();
                 }
             }
 
-            precision = (double) tpNum/relevantNum;
-        }
+            ap = sum/tp;
+            if (Double.isNaN(ap)){
+                continue;
+            }else {
+                ap_map.put(queryId,ap);
+            }
 
-        return  precision;
+        }
+        return  ap_map;
     }
 
     public static void writeResult(HashMap<String, Double> resultMap,boolean useDefaultScore){
@@ -68,7 +63,7 @@ public class PrecisionAtR {
             return;
         }
 
-        String output = "precisionAtR";
+        String output = "Ap-MAP-";
 
         if (useDefaultScore){
             output = output + "-defaultScoreFunc.txt";
@@ -94,6 +89,22 @@ public class PrecisionAtR {
                 bufferWriter.newLine();
             }
 
+            double map = 0;
+            double size = 0;
+
+            for (String queryId :resultMap.keySet() ){
+
+                if (resultMap.get(queryId) == Double.NaN){
+                    continue;
+                }
+                map += resultMap.get(queryId);
+                size++;
+
+
+            }
+            String line = String.format("MAP "+ map/size);
+            bufferWriter.write(line);
+
             System.out.println("output file wrote to file: "+path);
         }catch (IOException e){
             e.printStackTrace();
@@ -114,5 +125,4 @@ public class PrecisionAtR {
 
 
     }
-
 }

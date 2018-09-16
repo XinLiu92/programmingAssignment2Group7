@@ -66,10 +66,10 @@ public class Main {
 
            SearchEngine se = new SearchEngine(useDefaultScore,indexPath);
            TopDocs topDocs = se.performSearch(query, 100);
-           System.out.println("Result found: "+topDocs.totalHits);
+
 
             ScoreDoc[] hits = topDocs.scoreDocs;
-
+           System.out.println("================== hits size: "+ hits.length);
             for (int i = 0; i < hits.length;i++){
                 Document document = se.getDocument(hits[i].doc);
 
@@ -97,28 +97,13 @@ public class Main {
         List<Page> pageList = ReadData.getPageList();
         List<Paragraph> paragraphsList = ReadData.getParagraphList();
 
-
-
-        /*
-        if (!resultMap.containsKey(page.getPageId())) {
-					resultMap.put(page.getPageId(), rankResult);
-				} else {
-					ArrayList<RankDoc> exisitingRank = resultMap.get(page.getPageId());
-					exisitingRank.addAll(rankResult);
-
-
-         */
-
-
-        List<Rank> rankList = new ArrayList<>();
         Indexer indexer = new Indexer(useDefaultScore,indexPath);
 
         indexer.rebuildIndexes(paragraphsList);
 
-
         for (Page page : pageList){
             System.out.println("searching for query: "+ page.getPageName());
-
+            List<Rank> rankList = new ArrayList<>();
             String query = page.getPageName();
 
             SearchEngine se = new SearchEngine(useDefaultScore,indexPath);
@@ -129,7 +114,6 @@ public class Main {
 
             for (int i = 0; i < hits.length;i++){
                 Document document = se.getDocument(hits[i].doc);
-
                 Rank rank = new Rank();
                 rank.setQueryId(page.getPageId());
                 rank.setParagId(document.get("id"));
@@ -148,10 +132,10 @@ public class Main {
                 tmpRank.addAll(rankList);
                 resultMap.put(page.getPageId(),tmpRank);
             }
-
+            System.out.println("search done!    "+ "get rank list with size: " +rankList.size());
 
         }
-        System.out.println("search done!    "+ "get rank list with size: " +rankList.size());
+
         return  resultMap;
 
 
