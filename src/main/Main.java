@@ -12,21 +12,25 @@ import javax.print.Doc;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 public class Main {
 
 
+    private  static String methdName = "";
+    private  static  String indexPath = "";
+    private  static  boolean useDefaultScore = true;
     public static void main(String[] args) throws IOException, ParseException, CborException {
         System.setProperty("file.encoding", "UTF-8");
-        String methdName = "";
+//        String methdName = "";
         //read data
 
         //
         ///Users/xinliu/Documents/UNH/18Fall/cs853/index /Users/xinliu/Documents/UNH/18Fall/cs853/test200/test200-train/train.pages.cbor-paragraphs.cbor
         String defualtScore = args[0];
-        String indexPath = args[1];
-        boolean useDefaultScore = Boolean.valueOf(defualtScore);
+        indexPath = args[1];
+        useDefaultScore = Boolean.valueOf(defualtScore);
         if (useDefaultScore){
             methdName = "default";
             System.out.println("using lucene default score function");
@@ -44,6 +48,8 @@ public class Main {
         List<Rank> rankList = getRankList(paragraphsList,pageList,useDefaultScore,methdName,indexPath);
 
         writeResult(rankList,useDefaultScore);
+
+
 
     }
 
@@ -82,6 +88,73 @@ public class Main {
        }
         System.out.println("search done!    "+ "get rank list with size: " +rankList.size());
         return rankList;
+    }
+
+
+    public static HashMap<String, List<Rank>> rankResultMap(boolean useDefaultScore) throws ParseException, CborException, IOException {
+        HashMap<String,List<Rank>> resultMap = new HashMap<>();
+
+        List<Page> pageList = ReadData.getPageList();
+        List<Paragraph> paragraphsList = ReadData.getParagraphList();
+
+
+
+        /*
+        if (!resultMap.containsKey(page.getPageId())) {
+					resultMap.put(page.getPageId(), rankResult);
+				} else {
+					ArrayList<RankDoc> exisitingRank = resultMap.get(page.getPageId());
+					exisitingRank.addAll(rankResult);
+
+
+         */
+
+
+        List<Rank> rankList = new ArrayList<>();
+        Indexer indexer = new Indexer(useDefaultScore,indexPath);
+
+        indexer.rebuildIndexes(paragraphsList);
+
+
+        for (Page page : pageList){
+            System.out.println("searching for query: "+ page.getPageName());
+
+            String query = page.getPageName();
+
+            SearchEngine se = new SearchEngine(useDefaultScore,indexPath);
+            TopDocs topDocs = se.performSearch(query, 100);
+            System.out.println("Result found: "+topDocs.totalHits);
+
+            ScoreDoc[] hits = topDocs.scoreDocs;
+
+            for (int i = 0; i < hits.length;i++){
+                Document document = se.getDocument(hits[i].doc);
+
+                Rank rank = new Rank();
+                rank.setQueryId(page.getPageId());
+                rank.setParagId(document.get("id"));
+                rank.setRank(i+1);
+                rank.setScore(hits[i].score);
+                String methodTeamName = "Group7" + "-"+methdName;
+
+                rank.setMethodTeamName(methodTeamName);
+                rankList.add(rank);
+            }
+
+            if (!resultMap.containsKey(page.getPageId())){
+                resultMap.put(page.getPageId(),rankList);
+            }else {
+                List<Rank> tmpRank = resultMap.get(page.getPageId());
+                tmpRank.addAll(rankList);
+                resultMap.put(page.getPageId(),tmpRank);
+            }
+
+
+        }
+        System.out.println("search done!    "+ "get rank list with size: " +rankList.size());
+        return  resultMap;
+
+
     }
 
 
