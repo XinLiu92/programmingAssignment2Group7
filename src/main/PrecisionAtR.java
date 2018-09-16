@@ -38,6 +38,8 @@ public class PrecisionAtR {
         }
 
         writeResult(precisionAtR,defaultScore);
+        System.out.println("size " +precisionAtR.size());
+
 
     }
 
@@ -94,6 +96,16 @@ public class PrecisionAtR {
                 bufferWriter.newLine();
             }
 
+            double finalPr = 0;
+
+            for (String queryid : resultMap.keySet()){
+                finalPr += resultMap.get(queryid);
+            }
+
+            finalPr = finalPr / resultMap.size();
+
+            String line = String.format("final precision at r "+finalPr);
+            bufferWriter.write(line);
             System.out.println("output file wrote to file: "+path);
         }catch (IOException e){
             e.printStackTrace();

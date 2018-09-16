@@ -45,27 +45,27 @@ public class NDCG {
 
         TreeMap<String,List<String>> relevantMap = ReadData.getRelevant();
 
-        //HashMap<String, Double> NDCG_map = getNDCG_map(rankMap,relevantMap);
-
-        HashMap<String,Double> ap_map = getApMap(rankMap,relevantMap);
-        double map = 0;
-        double size = 0;
-
-        for (String queryId :ap_map.keySet() ){
-
-                if (ap_map.get(queryId) == Double.NaN){
-                    continue;
-                }
-                map += ap_map.get(queryId);
-                size++;
-
-            System.out.println(queryId+"  "+ ap_map.get(queryId));
-        }
-
-
-        //writeResult(ap_map,defaultScore);
-        System.out.println("======= map "+map/size);
-        System.out.println("ap size "+ap_map.size());
+        HashMap<String, Double> NDCG_map = getNDCG_map(rankMap,relevantMap);
+        writeResult(NDCG_map,defaultScore);
+//        HashMap<String,Double> ap_map = getApMap(rankMap,relevantMap);
+//        double map = 0;
+//        double size = 0;
+//
+//        for (String queryId :ap_map.keySet() ){
+//
+//                if (ap_map.get(queryId) == Double.NaN){
+//                    continue;
+//                }
+//                map += ap_map.get(queryId);
+//                size++;
+//
+//            System.out.println(queryId+"  "+ ap_map.get(queryId));
+//        }
+//
+//
+//        //writeResult(ap_map,defaultScore);
+//        System.out.println("======= map "+map/size);
+//        System.out.println("ap size "+ap_map.size());
     }
 
     public static HashMap<String, Double> getNDCG_map(HashMap<String, List<Rank>> rankMap, TreeMap<String,List<String>> relevantMap){
@@ -168,6 +168,17 @@ public class NDCG {
 
                 bufferWriter.newLine();
             }
+
+            double meanCDNG = 0;
+
+            for (String queryID : resultMap.keySet()){
+                meanCDNG += resultMap.get(queryID);
+            }
+
+            meanCDNG = meanCDNG/resultMap.size();
+
+            String line = String.format("final ndcg is "+meanCDNG);
+            bufferWriter.write(line);
 
             System.out.println("output file wrote to file: "+path);
         }catch (IOException e){
