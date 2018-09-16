@@ -3,10 +3,10 @@ package main;
 import edu.unh.cs.treccar_v2.Data;
 import edu.unh.cs.treccar_v2.read_data.DeserializeData;
 
-import java.io.File;
-import java.io.FileInputStream;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.TreeMap;
 
 public class ReadData {
 
@@ -86,6 +86,56 @@ public class ReadData {
         }
 
         return  pageList;
+    }
+
+    public static TreeMap<String, List<String>> getRelevant(){
+        TreeMap<String,List<String>> res = new TreeMap<>();
+
+        String path = "./test200-train/train.pages.cbor-article.qrels";
+        BufferedReader bufferedReader = null;
+
+        File file = new File(path);
+        FileInputStream stream = null;
+        try {
+            stream = new FileInputStream(file);
+            bufferedReader = new BufferedReader(new InputStreamReader(stream));
+            String line = bufferedReader.readLine();
+
+            while (line != null){
+                String[] strList = line.split("\\s");
+                String queryId = strList[0];
+                String docId = strList[2];
+                int isRelevant = Integer.valueOf(strList[3]);
+
+
+                if (res.containsKey(queryId)){
+                    if (isRelevant > 0){
+                        List<String> relevantDoc = res.get(queryId);
+                        relevantDoc.add(docId);
+                        res.put(queryId,relevantDoc);
+                    }
+                }else{
+                    List<String> releventDoc = new ArrayList<>();
+
+                    if (isRelevant > 0){
+                        releventDoc.add(docId);
+
+                    }
+
+                    res.put(queryId,releventDoc);
+                }
+
+                line = bufferedReader.readLine();
+
+            }
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+        }
+
+
+        return res;
     }
 
 }
