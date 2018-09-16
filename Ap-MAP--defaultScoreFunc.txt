@@ -1,0 +1,395 @@
+enwiki:IBM%20Monochrome%20Display%20Adapter   0.7530284043441939 
+
+enwiki:Iron%20gall%20ink                   0.9909782608695652 
+
+enwiki:Gastrointestinal%20stromal%20tumor    0.695112482525526 
+
+enwiki:Kulning                                            1.0 
+
+enwiki:Oregon%20Petition                   0.8689484126984126 
+
+enwiki:Crypt%20of%20Civilization            0.988578386109753 
+
+enwiki:Disaster%20recovery                  0.898636327037411 
+
+enwiki:Beta-Carboline                      0.5125757575757576 
+
+enwiki:P-500%20Bazalt                      0.8680555555555555 
+
+enwiki:Greek%20tragedy                     0.7336490010305731 
+
+enwiki:Atacama%20border%20dispute          0.4509206541064746 
+
+enwiki:Rosarito%20Beach                    0.9893990929705215 
+
+enwiki:Manned%20Orbiting%20Laboratory      0.6460212201591512 
+
+enwiki:Kubrick%20(toy)                     0.9583333333333334 
+
+enwiki:Opium%20production%20in%20Afghanistan   0.9694929772153106 
+
+enwiki:SETI%20Institute                     0.986013986013986 
+
+enwiki:Nickeline                                          1.0 
+
+enwiki:Creep%20(deformation)               0.9196207541965461 
+
+enwiki:Whiteleg%20shrimp                                  1.0 
+
+enwiki:Finns                                              1.0 
+
+enwiki:Recovery-oriented%20computing       0.7019230769230769 
+
+enwiki:Brush%20rabbit                                     1.0 
+
+enwiki:Slow%20cooker                       0.8962116588678983 
+
+enwiki:Symphony%20No.%201%20(Beethoven)    0.8992307692307693 
+
+enwiki:Fusarium%20wilt                     0.9558085433085434 
+
+enwiki:Economic%20model                    0.8044323073737005 
+
+enwiki:Hubbert%20peak%20theory             0.9007336872719173 
+
+enwiki:Micro%20Instrumentation%20and%20Telemetry%20Systems   0.4241689546589728 
+
+enwiki:New%20institutionalism                             1.0 
+
+enwiki:Women's%20health                    0.8316744553677214 
+
+enwiki:Six-man%20football                   0.974047619047619 
+
+enwiki:General%20will                      0.3106377099911583 
+
+enwiki:Australian%20Astronomical%20Observatory   0.5247316409081114 
+
+enwiki:Whale%20vocalization                               1.0 
+
+enwiki:Bad%20Dudes%20Vs.%20DragonNinja     0.9521464646464645 
+
+enwiki:Nonperson                                          1.0 
+
+enwiki:Plok                                               1.0 
+
+enwiki:School%20bus                         0.992780003253733 
+
+enwiki:Trekboer                                           1.0 
+
+enwiki:Cannon%20Street%20station           0.7369205941206293 
+
+enwiki:Fast-neutron%20reactor              0.8818483172748467 
+
+enwiki:Lord%20of%20the%20manor             0.9331518509907257 
+
+enwiki:Jewish%20Museum,%20Berlin           0.9690224614566718 
+
+enwiki:Hog-dog%20rodeo                                    0.9 
+
+enwiki:Cyclin                                             1.0 
+
+enwiki:Late%20Cretaceous                    0.846861471861472 
+
+enwiki:Election%20Assistance%20Commission   0.5600129691230729 
+
+enwiki:Aerosol%20spray                     0.8408333333333333 
+
+enwiki:Culture%20of%20Haiti                0.7940761284751053 
+
+enwiki:Ironbound                           0.9924172794117647 
+
+enwiki:Great%20Falls%20(Passaic%20River)   0.3412275334002729 
+
+enwiki:Entertainment%20Software%20Association   0.8415674603174602 
+
+enwiki:Political%20status%20of%20Transnistria   0.7164183185235816 
+
+enwiki:Child%20Support%20Agency            0.5190020140239828 
+
+enwiki:Vajont%20Dam                        0.6941359259339833 
+
+enwiki:Marsh%20tit                         0.9944444444444444 
+
+enwiki:Shaniwar%20Wada                                    1.0 
+
+enwiki:Dilated%20cardiomyopathy                           1.0 
+
+enwiki:Collectivization%20in%20the%20Soviet%20Union   0.5237084029734086 
+
+enwiki:Technical%20support                 0.8290988935903942 
+
+enwiki:Cardoon                                            1.0 
+
+enwiki:American%20Conservative%20Union     0.5798500878457067 
+
+enwiki:Miko                                               1.0 
+
+enwiki:Habituation                                        1.0 
+
+enwiki:Good%20manufacturing%20practice     0.9526289682539681 
+
+enwiki:Cancelled-to-order                  0.7050179211469534 
+
+enwiki:German%20Aerospace%20Center         0.5514704245419534 
+
+enwiki:Culture%20of%20Cuba                 0.7235804304460162 
+
+enwiki:Wobble%20base%20pair                0.8645124716553287 
+
+enwiki:Triptan                                            1.0 
+
+enwiki:Hydrocarbon%20exploration                        0.925 
+
+enwiki:Structural%20information%20theory   0.5166666666666666 
+
+enwiki:Passaic%20River                      0.763030140916023 
+
+enwiki:Neuroethology                                      1.0 
+
+enwiki:Canadian%20Labour%20Congress        0.7238298511162841 
+
+enwiki:Gorsedd                                            1.0 
+
+enwiki:Third%20Treaty%20of%20San%20Ildefonso   0.5889951159951161 
+
+enwiki:Coromandel%20Coast                  0.9807017543859649 
+
+enwiki:Strategic%20Offensive%20Reductions%20Treaty   0.2793352393691953 
+
+enwiki:Harpsichord%20concerto                             1.0 
+
+enwiki:No%20Sweat%20(organisation)                     0.8225 
+
+enwiki:Coors%20Field                       0.9492888064316636 
+
+enwiki:Cigna                                              1.0 
+
+enwiki:Micropezidae                                       1.0 
+
+enwiki:Schneider%20CA1                                    1.0 
+
+enwiki:Generalized%20anxiety%20disorder     0.930707096346366 
+
+enwiki:Activity%20theory                   0.9290028735452723 
+
+enwiki:Glocalization                                      1.0 
+
+enwiki:Enoyl%20CoA%20isomerase                            1.0 
+
+enwiki:Shape-memory%20alloy                0.9384054163949528 
+
+enwiki:Conjugate%20prior                    0.954648212226067 
+
+enwiki:Blackburn%20Skua                                   1.0 
+
+enwiki:Gorges%20State%20Park               0.8998843262001155 
+
+enwiki:Wing%20(military%20aviation%20unit)   0.7557809531511454 
+
+enwiki:Bursatella%20leachii                               1.0 
+
+enwiki:Khattak                                            1.0 
+
+enwiki:BBC%20Television%20Centre              0.9060567455331 
+
+enwiki:Farm%20Security%20Administration    0.6434928027491023 
+
+enwiki:Salmon%20River%20(Idaho)            0.9435212749067238 
+
+enwiki:Combat%20of%20the%20Thirty          0.5734644971886351 
+
+enwiki:Autophagy                                          1.0 
+
+enwiki:Castra                                             1.0 
+
+enwiki:GFA%20BASIC                                        1.0 
+
+enwiki:Adverse%20possession                0.9906150267071622 
+
+enwiki:Canada%E2%80%93United%20States%20border   0.7488350445135841 
+
+enwiki:Dorian%20invasion                   0.9580686250276923 
+
+enwiki:New%20England%20Conservatory%20of%20Music   0.9016488413547236 
+
+enwiki:Polarization%20(politics)           0.8485758773000509 
+
+enwiki:Narmada%20River                     0.8509029109301612 
+
+enwiki:MS-06%20Zaku%20II                   0.9742791583496984 
+
+enwiki:De%20La%20Salle%20Brothers          0.7568085045808537 
+
+enwiki:Royal%20Irish%20Academy             0.8449778834092558 
+
+enwiki:Fisher%20King                       0.9837241520064129 
+
+enwiki:Isola%20del%20Giglio                               1.0 
+
+enwiki:Metrolink%20(California)            0.7651397143696202 
+
+enwiki:St.%20Xavier's%20Institution        0.8737999761308032 
+
+enwiki:Goi%C3%A2nia%20accident             0.9651515151515152 
+
+enwiki:Pranayama                                          1.0 
+
+enwiki:Porto%20Digital                                    1.0 
+
+enwiki:Web%20standards                                    1.0 
+
+enwiki:Sinharaja%20Forest%20Reserve        0.7929824561403509 
+
+enwiki:Key%20management                    0.9148194646809605 
+
+enwiki:Anesthesia%20awareness               0.980093291787775 
+
+enwiki:Montferrat                          0.9535634118967453 
+
+enwiki:Woodgrange%20Park%20railway%20station   0.5771186950764415 
+
+enwiki:Pok%C3%A9mon%20Puzzle%20League      0.8445216049382717 
+
+enwiki:Contour%20line                      0.9256174509451318 
+
+enwiki:PPG%2016                            0.9805194805194806 
+
+enwiki:Paleolithic%20diet                  0.9686567352288767 
+
+enwiki:Communications%20Security%20Establishment    0.705562973940935 
+
+enwiki:Infield%20fly%20rule                0.9791109080170736 
+
+enwiki:Paget's%20disease%20of%20bone       0.9846910880262439 
+
+enwiki:Skyglow                                            1.0 
+
+enwiki:Federal%20Open%20Market%20Committee   0.7920662147488543 
+
+enwiki:Cottonseed%20oil                    0.9362745098039215 
+
+enwiki:Strategic%20Army%20Corps            0.5258110337243401 
+
+enwiki:Order%20of%20Our%20Lady%20of%20the%20Good%20Death   0.9335164835164834 
+
+enwiki:Spur                                               1.0 
+
+enwiki:Workers'%20Commissions              0.5925961991008974 
+
+enwiki:Brodie%20helmet                     0.9866269841269841 
+
+enwiki:Urban%20forestry                    0.9275528318468149 
+
+enwiki:Sargasso%20Sea                       0.963469387755102 
+
+enwiki:KDNL-TV                             0.8495710001759175 
+
+enwiki:Ch%C3%A2teau%20Mouton%20Rothschild   0.9939896036387262 
+
+enwiki:Sprint%20car%20racing                0.968922305764411 
+
+enwiki:Cytoplasmic%20streaming             0.9758837741635729 
+
+enwiki:Common%20garter%20snake             0.9973684210526316 
+
+enwiki:Evaporative%20cooler                0.9745470310105903 
+
+enwiki:Treadmill                                          1.0 
+
+enwiki:Nebulizer                                          1.0 
+
+enwiki:Persistent%20data%20structure       0.8677979067445378 
+
+enwiki:Late%20harvest%20wine               0.5330900983074895 
+
+enwiki:Magyar%20Telekom                                   1.0 
+
+enwiki:Clear%20Skies%20Act%20of%202003     0.9033670033670035 
+
+enwiki:Television%20set                   0.37221026071225777 
+
+enwiki:Walla%20Walla%20River               0.9331983805668016 
+
+enwiki:Food%20allergy                      0.8712104801055269 
+
+enwiki:Personality%20test                  0.9318240284619596 
+
+enwiki:Amblyopia                                          1.0 
+
+enwiki:Power%20nap                                        1.0 
+
+enwiki:McGillicuddy%20Serious%20Party      0.7935065531229214 
+
+enwiki:Emona                                              1.0 
+
+enwiki:Denehole                                           1.0 
+
+enwiki:Cumberland%20sausage                               1.0 
+
+enwiki:LinuxChix                                          1.0 
+
+enwiki:Trap-neuter-return                  0.9456168831168831 
+
+enwiki:Wolfpack%20(naval%20tactic)        0.38920634920634917 
+
+enwiki:Censorship%20in%20the%20United%20Kingdom   0.4936590440843087 
+
+enwiki:Quilombo                                           1.0 
+
+enwiki:Oil%20Pollution%20Act%20of%201990    0.900693773185356 
+
+enwiki:Magnetic%20bearing                  0.8689943738906403 
+
+enwiki:Fin%20Fang%20Foom                                  1.0 
+
+enwiki:Despotate%20of%20Epirus             0.9608153044571729 
+
+enwiki:Parkes%20Observatory                0.8393107089809291 
+
+enwiki:Mycotoxin                                          1.0 
+
+enwiki:SG-1000                             0.9805194805194806 
+
+enwiki:Lucky%20Spencer                     0.9489350374453881 
+
+enwiki:Parathyroid%20chief%20cell          0.8067460317460317 
+
+enwiki:Troglitazone                                       1.0 
+
+enwiki:Lowell%20Observatory%20Near-Earth-Object%20Search   0.5166666666666666 
+
+enwiki:Fast%20bowling                      0.8320780849925916 
+
+enwiki:Catholic%20views%20on%20God         0.7271659438186049 
+
+enwiki:Carolinian%20language               0.8300867719903947 
+
+enwiki:ASME                                               1.0 
+
+enwiki:Autonomism                                         1.0 
+
+enwiki:Tempel%201                          0.8988888888888888 
+
+enwiki:Saponin                                            1.0 
+
+enwiki:Data%20Protection%20Act%201998      0.7691154372758588 
+
+enwiki:Space%20Shuttle%20external%20tank    0.768720052064934 
+
+enwiki:Church%20of%20St%20Mary%20the%20Great,%20Cambridge   0.5443714737800381 
+
+enwiki:Tunnel%20magnetoresistance          0.7764498128134492 
+
+enwiki:Chickamauga%20Dam                   0.9566666666666667 
+
+enwiki:Merchant%20aircraft%20carrier       0.5679963090795799 
+
+enwiki:Voltage%20regulation                0.9797939873038689 
+
+enwiki:Moment%20magnitude%20scale           0.947611866487774 
+
+enwiki:Duchy%20of%20Pomerania              0.9509877064197163 
+
+enwiki:Boston%20Terrier                                   1.0 
+
+MAP 0.8660370198507025
