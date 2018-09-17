@@ -63,13 +63,13 @@ pdf verison on git:https://github.com/XinLiu92/programmingAssignment2Group7/blob
    for using default score function BM25
 
    ```
-   mvn exec:java -Dexec.mainClass="main.Main" -Dexec.args="true indexPath"
+   mvn exec:java -Dexec.mainClass="main.Main" -Dexec.args="true indexPath paragraphFilePath OutlinesFilePath qrelsFilePath"
    ```
 
    for using custom score function 
 
    ```
-   mvn exec:java -Dexec.mainClass="main.Main" -Dexec.args="false indexPath"
+   mvn exec:java -Dexec.mainClass="main.Main" -Dexec.args="true indexPath paragraphFilePath OutlinesFilePath qrelsFilePath"
    ```
 
    The output files will be created under the repository folder.
@@ -85,13 +85,13 @@ pdf verison on git:https://github.com/XinLiu92/programmingAssignment2Group7/blob
    ​	for using default score function BM25
 
    ```
-   mvn exec:java -Dexec.mainClass="main.PrecisionAtR" -Dexec.args="true indexPath"
+   mvn exec:java -Dexec.mainClass="main.PrecisionAtR" -Dexec.args="true indexPath paragraphFilePath OutlinesFilePath qrelsFilePath"
    ```
 
    ​	for using custom score function
 
    ```
-   mvn exec:java -Dexec.mainClass="main.PrecisionAtR" -Dexec.args="false indexPath"
+   mvn exec:java -Dexec.mainClass="main.PrecisionAtR" -Dexec.args="false indexPath paragraphFilePath OutlinesFilePath qrelsFilePath"
    ```
 
    ​	The output files will be created under the repository folder named like:
@@ -103,13 +103,13 @@ pdf verison on git:https://github.com/XinLiu92/programmingAssignment2Group7/blob
    for using default score function BM25
 
    ```
-   mvn exec:java -Dexec.mainClass="main.MAP" -Dexec.args="true indexPath"
+   mvn exec:java -Dexec.mainClass="main.MAP" -Dexec.args="true indexPath paragraphFilePath OutlinesFilePath qrelsFilePath"
    ```
 
    for using custom score function
 
    ```
-   mvn exec:java -Dexec.mainClass="main.MAP" -Dexec.args="false indexPath"
+   mvn exec:java -Dexec.mainClass="main.MAP" -Dexec.args="false indexPath paragraphFilePath OutlinesFilePath qrelsFilePath"
    ```
 
    The output files will be created under the repository folder.
@@ -121,13 +121,13 @@ pdf verison on git:https://github.com/XinLiu92/programmingAssignment2Group7/blob
    ​	for using default score function BM25
 
    ```
-   mvn exec:java -Dexec.mainClass="main.NDCG" -Dexec.args="true indexPath"
+   mvn exec:java -Dexec.mainClass="main.NDCG" -Dexec.args="true indexPath paragraphFilePath OutlinesFilePath qrelsFilePath"
    ```
 
    for using default score function BM25
 
    ```
-   mvn exec:java -Dexec.mainClass="main.NDCG" -Dexec.args="false indexPath"
+   mvn exec:java -Dexec.mainClass="main.NDCG" -Dexec.args="false indexPath paragraphFilePath OutlinesFilePath qrelsFilePath"
    ```
 
    The output files will be created under the repository folder.
