@@ -21,6 +21,10 @@ public class Main {
     private  static String methdName = "";
     private  static  String indexPath = "";
     private  static  boolean useDefaultScore = true;
+    private  static  String paragraphPath = "";
+    private  static  String pagePath = "";
+    private  static  String qrelPath = "";
+
     public static void main(String[] args) throws IOException, ParseException, CborException {
         System.setProperty("file.encoding", "UTF-8");
 //        String methdName = "";
@@ -30,6 +34,12 @@ public class Main {
         ///Users/xinliu/Documents/UNH/18Fall/cs853/index /Users/xinliu/Documents/UNH/18Fall/cs853/test200/test200-train/train.pages.cbor-paragraphs.cbor
         String defualtScore = args[0];
         indexPath = args[1];
+        paragraphPath = args[2];
+        pagePath = args[3];
+        qrelPath = args[4];
+
+
+
         useDefaultScore = Boolean.valueOf(defualtScore);
         if (useDefaultScore){
             methdName = "default";
@@ -40,10 +50,11 @@ public class Main {
         }
 
 
+        ReadData readData = new ReadData(paragraphPath,pagePath,qrelPath);
+        List<Paragraph> paragraphsList = readData.getParagraphList();
+//        List<Paragraph> paragraphsList = ReadData.getParagraphList();
 
-        List<Paragraph> paragraphsList = ReadData.getParagraphList();
-
-        List<Page> pageList = ReadData.getPageList();
+        List<Page> pageList = readData.getPageList();
 
         List<Rank> rankList = getRankList(paragraphsList,pageList,useDefaultScore,methdName,indexPath);
 

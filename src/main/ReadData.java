@@ -10,6 +10,22 @@ import java.util.TreeMap;
 
 public class ReadData {
 
+    private static String paragPath = "";
+    private static String pagePath = "";
+    private static String qrelPath = "";
+
+
+    public ReadData(){
+
+    }
+
+    public ReadData(String paragraphPath,String pagedir, String qreldir){
+        this.paragPath = paragraphPath;
+        this.pagePath = pagedir;
+        this.qrelPath = qreldir;
+    }
+
+
     public static void main(String args[]){
 //        if (args.length < 1){
 //            System.out.println("command line argument : FileDirectory");
@@ -17,18 +33,18 @@ public class ReadData {
 
 //        String filePath = args[0];
 
-
-        System.out.println("reading data");
-
-
+        paragPath = args[0];
+        pagePath = args[1];
+        qrelPath = args[2];
 
     }
 
 
     public static List<Paragraph> getParagraphList() {
         List<Paragraph> paragraphsList = new ArrayList<>();
-        String fileDir = "./test200-train/train.pages.cbor-paragraphs.cbor";
-        File file = new File(fileDir);
+//        String fileDir = "./test200-train/train.pages.cbor-paragraphs.cbor";
+        System.out.println(pagePath);
+        File file = new File(paragPath);
 
         FileInputStream stream = null;
         try {
@@ -59,9 +75,9 @@ public class ReadData {
     public static List<Page> getPageList(){
         List<Page> pageList = new ArrayList<>();
 
-        String fileDir = "./test200-train/train.pages.cbor-outlines.cbor";
+//        String fileDir = "./test200-train/train.pages.cbor-outlines.cbor";
 
-        File file = new File(fileDir);
+        File file = new File(pagePath);
 
         FileInputStream stream = null;
         try {
@@ -91,10 +107,10 @@ public class ReadData {
     public static TreeMap<String, List<String>> getRelevant(){
         TreeMap<String,List<String>> res = new TreeMap<>();
 
-        String path = "./test200-train/train.pages.cbor-article.qrels";
+//        String path = "./test200-train/train.pages.cbor-article.qrels";
         BufferedReader bufferedReader = null;
 
-        File file = new File(path);
+        File file = new File(qrelPath);
         FileInputStream stream = null;
         try {
             stream = new FileInputStream(file);
